@@ -1593,8 +1593,12 @@ a:focus {
 }
 
 .imageport{
-    width: 230px !important;
+    /* width: 230px !important; */
     height: 230px !important;
+}
+.imageport_modal{
+     width: 230px !important;
+     height: 230px !important;
 }
 .imageteam{
     width: 300px !important;

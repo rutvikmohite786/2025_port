@@ -3,6 +3,7 @@
 <div class="container">
 @include('admin.message')
 <a type="button" href="{{route('about.add')}}" class="btn btn-primary">Add Data</a>
+<br><br>
 <br>
 <table class="table">
   <thead>

@@ -142,6 +142,7 @@ Route::controller(HomePageController::class)->group(function () {
     Route::get('/freelancing', 'index')->name('portfolio.page');
     Route::get('/resume', 'index')->name('portfolio.page.resume');
     Route::post('/contact/store', 'contactStore')->name('contact.store');
+    Route::get('/back', 'redirectBack')->name('redirect.back');
 });
 
 Route::controller(PortfolioDetailController::class)->group(function () {

@@ -1,6 +1,6 @@
 @extends('layouts.user')
 @section('content')
-    <!-- Nav Bar Start -->
+<i class="fab fa-php"></i>    <!-- Nav Bar Start -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -45,16 +45,16 @@
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
+ 
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto">
                     <a href="#home" class="nav-item nav-link active">Home</a>
                     <a href="#about" class="nav-item nav-link">About</a>
-                    <a href="#service" class="nav-item nav-link">Service</a>
                     <a href="#experience" class="nav-item nav-link">Experience</a>
                     <a href="#portfolio" class="nav-item nav-link">Portfolio</a>
 
                     @if ($_GET['id'] == config('key.freelancer_key'))
+                        <a href="#service" class="nav-item nav-link">Service</a>
                         <a href="#price" class="nav-item nav-link">Price</a>
                         <a href="#review" class="nav-item nav-link">Review</a>
                         <a href="#team" class="nav-item nav-link">Team</a>
@@ -133,6 +133,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
     <!-- About End -->
@@ -203,7 +204,8 @@
 
     <!-- Banner Start -->
     <div class="banner wow zoomIn" data-wow-delay="0.1s">
-        <div class="container">
+        <div class="">
+        @if ($_GET['id'] == config('key.freelancer_key'))
             <div class="section-header text-center">
                 <p>Reasonable Price</p>
                 <h2>Get A <span>Special</span> Price</h2>
@@ -216,6 +218,32 @@
                 </p>
                 <a class="btn">Pricing Plan</a>
             </div>
+
+        @else
+           <div class="section-header text-center">
+                <h2>My <span>Expertice</span></h2>
+            </div><br>
+            <div class="container banner-text" style="max-width: 80% ;">
+               <div class="row">
+                <div class="col-sm-3">
+                <i class="fab fa-php" style="font-size: 100px; color:black;"></i>
+                <p>hjhhjhjhjhj</p>
+                </div>
+                <div class="col-sm-3">
+                <i class="fab fa-laravel" style="font-size: 100px;color:black;"></i>
+                </div>
+                <div class="col-sm-3">
+                <i class="fab fa-react" style="font-size: 100px;color:black;"></i>
+                </div>
+                <div class="col-sm-3">
+                <i class="fas fa-hard-hat" style="font-size: 100px;color:black;"></i>
+                </div>
+               </div>
+              
+            </div>
+        @endif
+
+        
         </div>
     </div>
     <!-- Banner End -->
@@ -265,6 +293,7 @@
 
 
     <!-- Banner Start -->
+    @if ($_GET['id'] == config('key.freelancer_key'))
     <div class="banner wow zoomIn" data-wow-delay="0.1s">
         <div class="container">
             <div class="section-header text-center">
@@ -281,9 +310,11 @@
             </div>
         </div>
     </div>
+    @endif
     <!-- Banner End -->
 
     <!-- Testimonial Start -->
+    @if ($_GET['id'] == config('key.freelancer_key'))
     <div class="testimonial wow fadeInUp" data-wow-delay="0.1s" id="review">
         <div class="container">
             <div class="testimonial-icon">
@@ -332,6 +363,7 @@
             </div>
         </div>
     </div>
+    @endif
     <!-- Testimonial End -->
 
 
@@ -528,6 +560,10 @@
             });
             $(".nav-link").click(function() {
                 $('#navbarCollapse').removeClass('show')
+                setTimeout(function() {
+                    $('#loader').removeClass('show')
+                }, 1000);
+                $('#loader').addClass('show')
             });
             $('.learn_more').on('click', function(e) {
 
@@ -542,23 +578,23 @@
                 e.preventDefault();
             });
         });
-         $(window).on('load', function() {
-            var category = 'happiness'
-            $.ajax({
-                method: 'GET',
-                url: 'https://api.whatdoestrumpthink.com/api/v1/quotes/random',
-                contentType: 'application/json',
-                success: function(result) {
-                    $('#exampleModalCenter').modal('show');
+        //  $(window).on('load', function() {
+        //     var category = 'happiness'
+        //     $.ajax({
+        //         method: 'GET',
+        //         url: 'https://api.whatdoestrumpthink.com/api/v1/quotes/random',
+        //         contentType: 'application/json',
+        //         success: function(result) {
+        //             $('#exampleModalCenter').modal('show');
 
-                    console.log(result);
-                    $('.lead').html(result.message)
-                },
-                error: function ajaxError(jqXHR) {
-                    console.error('Error: ', jqXHR.responseText);
-                }
-            });
-        });
+        //             console.log(result);
+        //             $('.lead').html(result.message)
+        //         },
+        //         error: function ajaxError(jqXHR) {
+        //             console.error('Error: ', jqXHR.responseText);
+        //         }
+        //     });
+        // });
     </script>
        
 @endsection

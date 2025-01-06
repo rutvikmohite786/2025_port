@@ -33,6 +33,8 @@
     </select>
   </div>
   <button type="submit" class="btn btn-primary">Update</button>
+  <a type="button" href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success">Back</a>
+
 </form>
 </div>
 @endsection

@@ -12,7 +12,7 @@
 
                     @foreach($data->images as $key => $value)
                     <div class="col-sm-4">
-                        <img src="{{asset('images/portfolio'.'/'.$value->image)}}" alt="Image" class="imageport">
+                        <img src="{{asset('images/portfolio'.'/'.$value->image)}}" alt="Image" class="imageport_modal">
                     </div>
                     @endforeach
 

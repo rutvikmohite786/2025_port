@@ -42,4 +42,7 @@ class HomePageController extends Controller
          ]);
          return redirect()->route('index.about')->with('message','updated');
     }
+    public function redirectBack(){
+      return redirect()->back()->with('success', 'your message,here');   
+    }
 }
