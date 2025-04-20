@@ -42,7 +42,7 @@ class PortfolioImageController extends Controller
         }
         $data->portfolio_id = $request->port_id;
         $data->save();
-        return redirect()->route('index.portfolio.image')->with('message','updated');
+        return redirect()->route('index.portfolio.image')->with('message','Updated');
     }
     public function edit($id){
         $image = PortfolioImage::with('portfolio')->first();

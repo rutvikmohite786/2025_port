@@ -16,7 +16,7 @@
     <input name="duration" type="text" class="form-control" id="duration" placeholder="Enter duration">
   </div>
   <div class="form-group">
-    <label for="port">Example select</label>
+    <label for="port">Portfolio</label>
     <select class="form-control" id="port" name="port">
       <option value="">Please select portfolio</option>
       @foreach($data as $key => $value)

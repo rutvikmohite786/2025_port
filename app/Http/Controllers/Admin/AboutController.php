@@ -38,7 +38,7 @@ class AboutController extends Controller
          'description' => $request->desc,
          'for_use'=>$request->for_use
       ]);
-      return redirect()->route('index.about')->with('message','updated');
+      return redirect()->route('index.about')->with('message','Updated');
    }
    public function delete($id)
    {

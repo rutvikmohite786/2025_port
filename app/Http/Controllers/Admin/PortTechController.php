@@ -29,7 +29,7 @@ class PortTechController extends Controller
        PortTech::where('id',$request->id)->update([
           'name'=>$request->name
        ]);
-       return redirect()->route('index.porttech')->with('message','updated');
+       return redirect()->route('index.porttech')->with('message','Updated');
     }
     public function delete($id){
       PortTech::where('id',$id)->delete();

@@ -33,7 +33,7 @@ class ServiceController extends Controller
             'image'=>$request->image,
             'description'=>$request->desc
         ]);
-        return redirect()->route('index.service')->with('message','updated');
+        return redirect()->route('index.service')->with('message','Updated');
     }
     public function delete($id){
         Service::find($id)->delete();

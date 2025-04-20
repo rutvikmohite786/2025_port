@@ -18,7 +18,7 @@ class PortfolioDetailController extends Controller
     }
     public function add()
     {
-        $data = Portfolio::all();
+        $data = Portfolio::doesntHave('details')->get();
         return view('admin.details.add', compact('data'));
     }
     public function store(Request $request)
