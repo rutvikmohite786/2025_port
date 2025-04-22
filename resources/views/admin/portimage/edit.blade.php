@@ -9,7 +9,7 @@
     <select class="form-control" id="port" name="port_id">
       <option value="">Please select portfolio</option>
       @foreach($data as $key => $value)
-      <option value="{{$value->id}}" {{$value->id==$image->portfolio->id ? 'selected' : ''}}>{{$value->title}}</option>
+      <option value="{{$value->id}}" {{$value->id==$image->portfolio_id ? 'selected' : ''}}>{{$value->title}}</option>
       @endforeach
     </select>
   </div>
