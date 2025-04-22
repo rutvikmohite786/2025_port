@@ -12,7 +12,7 @@
 
                     @foreach($data->images as $key => $value)
                     <div class="col-sm-4">
-                        <img src="{{asset('images/portfolio'.'/'.$value->image)}}" alt="Image" class="imageport_modal">
+                        <a href="{{asset('images/portfolio'.'/'.$value->image)}}" data-lightbox="image-{{ $key }}" data-title="port-image-{{ $key }}"> <img src="{{asset('images/portfolio'.'/'.$value->image)}}" alt="Image" class="imageport_modal"></a>
                     </div>
                     @endforeach
 

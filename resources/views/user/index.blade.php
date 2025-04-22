@@ -1,5 +1,16 @@
 @extends('layouts.user')
 @section('content')
+<!-- Thank You Modal -->
+<div class="modal fade" id="thankYouModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center p-4">
+        <div class="modal-body">
+          <h5 class="modal-title mb-2">Thank you for your submission!</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -441,7 +452,7 @@
                     <div class="col-md-8">
                         <div class="contact-form">
                             <div id="success"></div>
-                            <form action="{{ route('contact.store') }}" id="contactForm" method="post"
+                            <form id="contactForm"
                                 novalidate="novalidate">
                                 @csrf
                                 <div class="control-group">
@@ -605,6 +616,36 @@
                 e.preventDefault();
             });
         });
+
+
+        $('#contactForm').on('submit', function(e) {
+        e.preventDefault();
+        const isValid = this.checkValidity();
+        if(!isValid){
+          return false;
+        }
+
+        $.ajax({
+            url: "{{ route('contact.store') }}", // Your Laravel route
+            method: 'POST',
+            data: $(this).serialize(), // Serialize form data
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response) {
+                $('#contactForm')[0].reset();
+                $('#thankYouModal').modal('show');
+
+// ✅ Hide modal after 2 seconds
+setTimeout(function () {
+    $('#thankYouModal').modal('hide');
+}, 2000);
+            },
+            error: function(xhr) {
+                console.log('Error:', xhr.responseText);
+            }
+        });
+    });
         //  $(window).on('load', function() {
         //     var category = 'happiness'
         //     $.ajax({
