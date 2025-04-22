@@ -1597,8 +1597,11 @@ a:focus {
     height: 230px !important;
 }
 .imageport_modal{
-     width: 230px !important;
+     /* width: 230px !important;
+     height: 230px !important; */
+     width: 100% !important;
      height: 230px !important;
+     object-fit: cover;
 }
 .imageteam{
     width: 300px !important;
