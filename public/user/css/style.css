@@ -463,9 +463,9 @@ a:focus {
     font-weight: 700;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 767px) {
     .section-header h2 {
-        /* font-size: 30px; */
+        font-size: 30px;
     }
 }
 
@@ -1611,3 +1611,14 @@ a:focus {
 .swiper-slide ul{
     font-size: larger !important;
 }
+
+/* Mobile view only (max width 767px) */
+@media (max-width: 767px) {
+    .expertice h2,span {
+      font-size: xx-large !important;
+    }
+    .navbar-brand{
+        font-size:xx-large !important;
+    }
+  }
+  

@@ -230,7 +230,7 @@
             </div>
 
         @else
-        <div class="section-header text-center">
+        <div class="section-header text-center expertice">
             <h2>My <span>Expertice</span></h2>
           </div>
           <br>
