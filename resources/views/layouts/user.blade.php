@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link href="{{ asset('user/css/style.css')}}" rel="stylesheet" />
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 </head>
 
@@ -46,7 +48,6 @@
     <script src="{{ asset('user/lib/lightbox/js/lightbox.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
     <script src="{{ asset('user/js/main.js')}}"></script>
-
     <!-- Contact Javascript File -->
     @yield('footer')
     <!-- Template Javascript -->
