@@ -17,7 +17,7 @@
                     @endforeach
 
                 </div>
-                <p>{{$data->details->details}}</p>
+                <p>{!! $data->details->details !!}</p>
                 <h3>Check the following links for more detials</h3>
                <span>(1)<a href="{{$data->details->link_1}}">{{$data->details->link_1}}</a></span>
                <br>
