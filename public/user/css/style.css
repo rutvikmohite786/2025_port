@@ -465,7 +465,7 @@ a:focus {
 
 @media (max-width: 767.98px) {
     .section-header h2 {
-        font-size: 30px;
+        /* font-size: 30px; */
     }
 }
 
@@ -1603,4 +1603,8 @@ a:focus {
 .imageteam{
     width: 300px !important;
     height: 300px !important;
+}
+
+.swiper-slide ul{
+    font-size: larger !important;
 }

@@ -1,6 +1,5 @@
 @extends('layouts.user')
 @section('content')
-<i class="fab fa-php"></i>    <!-- Nav Bar Start -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -220,27 +219,55 @@
             </div>
 
         @else
-           <div class="section-header text-center">
-                <h2>My <span>Expertice</span></h2>
-            </div><br>
-            <div class="container banner-text" style="max-width: 80% ;">
-               <div class="row">
-                <div class="col-sm-3">
-                <i class="fab fa-php" style="font-size: 100px; color:black;"></i>
-                <p>hjhhjhjhjhj</p>
+        <div class="section-header text-center">
+            <h2>My <span>Expertice</span></h2>
+          </div>
+          <br>
+          <div class="container banner-text" style="max-width: 80%;">
+            <div class="swiper mySwiper">
+              <div class="swiper-wrapper">
+          
+                <div class="swiper-slide text-center">
+                  <i class="fab fa-php" style="font-size: 100px; color:black;"></i>
+                  
+                    <ul style="text-align:justify;color:white;">
+                        <li>Developed dynamic and secure web applications using <strong>Vanilla PHP</strong>, following MVC design patterns.</li>
+                        <li>Built and consumed <strong>RESTful APIs</strong> using PHP and cURL.</li>
+                        <li>Integrated third-party services such as <strong>Stripe, Paddle, and PayPal</strong> for seamless payment processing.</li>
+                      </ul>
+                      
+                  
                 </div>
-                <div class="col-sm-3">
-                <i class="fab fa-laravel" style="font-size: 100px;color:black;"></i>
+          
+                <div class="swiper-slide text-center">
+                  <i class="fab fa-laravel" style="font-size: 100px;color:black;"></i>
+                  <ul style="text-align:justify;color:white;">
+                    <li>Developed scalable web applications using <strong>Laravel</strong>, implementing MVC architecture and RESTful routing.</li>
+                    <li>Integrated <strong>Laravel Cashier</strong> for subscription billing with Stripe, and handled webhook events securely.</li>
+                    <li>Utilized <strong>Eloquent ORM</strong> for efficient database queries and implemented relationships, validations, and migrations.</li>
+                  </ul>                </div>
+          
+                <div class="swiper-slide text-center">
+                  <i class="fab fa-react" style="font-size: 100px;color:black;"></i>
+                  <ul style="text-align:justify;color:white;">
+                    <li>Developed interactive and responsive web applications using <strong>React.js</strong> with hooks and functional components.</li>
+                    <li>Implemented state management using <strong>Context API</strong> and <strong>Redux</strong> for global state across complex applications.</li>
+                    <li>Built dynamic UI components with <strong>React Router</strong> for seamless navigation and <strong>Axios</strong> for handling API requests.</li>
+                  </ul>
                 </div>
-                <div class="col-sm-3">
-                <i class="fab fa-react" style="font-size: 100px;color:black;"></i>
+          
+                <div class="swiper-slide text-center">
+                  <i class="fas fa-hard-hat" style="font-size: 100px;color:black;"></i>
+                  <ul style="text-align:justify;color:white;">
+                    <li>Developed and tested smart contracts using <strong>Hardhat</strong>, ensuring efficient deployment and contract interaction.</li>
+                    <li>Integrated <strong>Hardhat</strong> with <strong>Ethereum</strong> test networks (Rinkeby, Goerli) for seamless contract testing and validation.</li>
+                    <li>Automated smart contract deployment and interaction scripts using <strong>Hardhat</strong> along with <strong>ethers.js</strong> for smooth DApp integration.</li>
+                  </ul>
                 </div>
-                <div class="col-sm-3">
-                <i class="fas fa-hard-hat" style="font-size: 100px;color:black;"></i>
-                </div>
-               </div>
-              
+          
+              </div>
             </div>
+          </div>
         @endif
 
         
@@ -595,6 +622,24 @@
         //         }
         //     });
         // });
+
+        new Swiper(".mySwiper", {
+          slidesPerView: 1,
+          spaceBetween: 30,
+          loop: true,
+          grabCursor: true,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+          breakpoints: {
+            768: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+          },
+        });
     </script>
-       
 @endsection

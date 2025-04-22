@@ -1,7 +1,8 @@
 @extends('layouts.admin')
 @section('content')
 <div class="container">
-<form method="post" action="{{route('portfolio.store')}}" enctype="multipart/form-data" id="portfolioform">
+<form method="post" action="{{route('portfolio.update')}}" enctype="multipart/form-data" id="portfolioformEdit">
+  <input type="hidden" value="{{$data->id}}" name="id">
   @csrf
   <div class="form-group">
     <label for="title">Title</label>
@@ -24,6 +25,7 @@
     <input type="file" class="form-control-file" id="image" name="image">
   </div>
   <button type="submit" class="btn btn-primary">Save</button>
+  <a type="button" href="javascript:void(0);" onclick="window.history.back();" class="btn btn-success">Back</a>
 </form>
 </div>
 @endsection

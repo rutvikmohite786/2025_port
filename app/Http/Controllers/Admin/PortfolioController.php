@@ -53,4 +53,18 @@ class PortfolioController extends Controller
         Portfolio::where('id',$id)->delete();
         return redirect()->route('index.portfolio')->with('error','deleted');
     }
+    public function update(Request $request){
+        $id = $request->id;
+        $save = Portfolio::where('id',$id)->first();
+        if ($request->image != null) {
+            $name = time() . '.' . $request->image->extension();
+            $destinationPath = 'images/portfolio';
+            $request->image->move(public_path($destinationPath), $name);
+            $save->image = $name;
+        }
+        $save->title  = $request->title;
+        $save->port_tech_id = $request->tech;
+        $save->save();
+        return redirect()->route('index.portfolio')->with('message','updated');
+    }
 }

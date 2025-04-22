@@ -40,7 +40,7 @@ class HomePageController extends Controller
            'subject'=>$request->subject,
            'message'=>$request->message
          ]);
-         return redirect()->route('index.about')->with('message','updated');
+         return redirect()->route('index.about')->with('message','Updated');
     }
     public function redirectBack(){
       return redirect()->back()->with('success', 'your message,here');   

@@ -6,4 +6,11 @@ $(document).ready(function() {
             image:"required"
         , }
     });
+
+    $("#portfolioformEdit").validate({
+        rules: {
+            title: "required",
+            tech:"required",
+        }
+    });
 });
