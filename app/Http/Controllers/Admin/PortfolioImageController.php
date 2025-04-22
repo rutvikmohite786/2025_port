@@ -45,7 +45,7 @@ class PortfolioImageController extends Controller
         return redirect()->route('index.portfolio.image')->with('message','Updated');
     }
     public function edit($id){
-        $image = PortfolioImage::with('portfolio')->first();
+        $image = PortfolioImage::with('portfolio')->where('id',$id)->first();
         $data = Portfolio::all();
         return view('admin.portimage.edit', compact('data','image'));
     }
