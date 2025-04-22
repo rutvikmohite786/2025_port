@@ -24,12 +24,10 @@
     <link href="{{ asset('user/lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="{{ asset('user/css/style.css')}}" rel="stylesheet">
+    <link href="{{ asset('user/css/style.css') }}?v={{ time() }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <link href="{{ asset('user/css/style.css')}}" rel="stylesheet" />
-
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 </head>
 
