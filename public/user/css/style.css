@@ -617,12 +617,12 @@ a:focus {
   right: 10px;
   z-index: 1;
   border: 10px solid;
-  border-color: transparent transparent transparent #dddddd;
+  border-color: transparent transparent transparent #00aab1;
 }
 
 .experience .timeline .timeline-item.right::before {
   left: 10px;
-  border-color: transparent #dddddd transparent transparent;
+  border-color: transparent #00aab1 transparent transparent;
 }
 
 .experience .timeline .timeline-date {
@@ -651,13 +651,16 @@ a:focus {
     padding: 30px;
     background: #ffffff;
     position: relative;
-    border-right: 5px solid #dddddd;
+    border: 2px solid #00aab1;
+    border-right: 5px solid #00aab1;
     box-shadow: 0 0 60px rgba(0, 0, 0, .08);
+    border-radius: 8px;
 }
 
 .experience .timeline .timeline-item.right .timeline-text {
-    border-right: none;
-    border-left: 5px solid #dddddd;
+    /* border-right: none; */
+    border-left: 5px solid #00aab1;
+    border-right-width: 2px;
 }
 
 .experience .timeline .timeline-text h2 {
@@ -925,7 +928,7 @@ a:focus {
 }
 
 .banner .container {
-    max-width: 750px;
+    /* max-width: 750px; */
     text-align: center;
 }
 
@@ -947,8 +950,11 @@ a:focus {
 }
 
 .banner .section-header h2 span {
-    color: #414141;
+    color: #00aab1;
     font-size: 50px;
+    background: #fff;
+    padding: 5px 16px;
+    border-radius: 8px;
 }
 
 .banner .banner-text p {
@@ -1612,6 +1618,37 @@ a:focus {
     font-size: larger !important;
 }
 
+.section-expertice i {
+    font-size: 72px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+.section-expertice ul {
+    text-align: left;
+    padding-left: 20px;
+    margin: 0;
+    padding: 0;
+}
+.section-expertice ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.section-expertice {
+    border: solid 1px #fff;
+    padding: 20px;
+    height: 100%;
+    border-radius: 8px;
+}
+.banner .swiper-slide {
+    height: auto;
+}
+.section-expertice ul li {
+    padding-bottom: 16px;
+}
+.section-expertice ul li:last-of-type {
+    padding-bottom: 0px;
+}
 /* Mobile view only (max width 767px) */
 @media (max-width: 767px) {
     .expertice h2,span {
@@ -1620,5 +1657,17 @@ a:focus {
     .navbar-brand{
         font-size:xx-large !important;
     }
+    .navbar-toggler-icon {
+        width:38px !important;
+        height: 30px !important;
+    }
+    .section-expertice {
+        padding: 10px;
+    }
+    .section-expertice {
+        height: auto;
+    }
   }
+
+
   
