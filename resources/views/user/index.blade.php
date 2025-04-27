@@ -148,7 +148,7 @@
     </div>
     <!-- About End -->
 
-    @if ($_GET['id'] == config('key.freelancer_key'))
+    
         <!-- Service Start -->
         <div class="service" id="service">
             <div class="container">
@@ -176,7 +176,7 @@
             </div>
         </div>
         <!-- Service End -->
-    @endif
+   
 
     <!-- Modal -->
     <div class="modaladd">
@@ -210,8 +210,7 @@
         </div>
     @endif
     <!-- Job Experience End -->
-
-
+    
     <!-- Banner Start -->
     <div class="banner wow zoomIn" data-wow-delay="0.1s">
         <div class="">
@@ -234,46 +233,50 @@
             <h2>My <span>Expertice</span></h2>
           </div>
           <br>
-          <div class="container banner-text" style="max-width: 80%;">
+          <div class="container banner-text">
             <div class="swiper mySwiper">
               <div class="swiper-wrapper">
           
                 <div class="swiper-slide text-center">
-                  <i class="fab fa-php" style="font-size: 100px; color:black;"></i>
+                <div class="section-expertice">
+                  <i class="fab fa-php"></i>
                   
-                    <ul style="text-align:justify;color:white;">
+                    <ul style="color:white;">
                         <li>Developed dynamic and secure web applications using <strong>Vanilla PHP</strong>, following MVC design patterns.</li>
                         <li>Built and consumed <strong>RESTful APIs</strong> using PHP and cURL.</li>
                         <li>Integrated third-party services such as <strong>Stripe, Paddle, and PayPal</strong> for seamless payment processing.</li>
                       </ul>
                       
-                  
+                    </div>
                 </div>
           
                 <div class="swiper-slide text-center">
-                  <i class="fab fa-laravel" style="font-size: 100px;color:black;"></i>
-                  <ul style="text-align:justify;color:white;">
+                    <div class="section-expertice">
+                  <i class="fab fa-laravel" ></i>
+                  <ul style="color:white;">
                     <li>Developed scalable web applications using <strong>Laravel</strong>, implementing MVC architecture and RESTful routing.</li>
                     <li>Integrated <strong>Laravel Cashier</strong> for subscription billing with Stripe, and handled webhook events securely.</li>
                     <li>Utilized <strong>Eloquent ORM</strong> for efficient database queries and implemented relationships, validations, and migrations.</li>
-                  </ul>                </div>
+                  </ul>         </div>       </div>
           
                 <div class="swiper-slide text-center">
-                  <i class="fab fa-react" style="font-size: 100px;color:black;"></i>
-                  <ul style="text-align:justify;color:white;">
+                    <div class="section-expertice">
+                  <i class="fab fa-react" ></i>
+                  <ul style="color:white;">
                     <li>Developed interactive and responsive web applications using <strong>React.js</strong> with hooks and functional components.</li>
                     <li>Implemented state management using <strong>Context API</strong> and <strong>Redux</strong> for global state across complex applications.</li>
                     <li>Built dynamic UI components with <strong>React Router</strong> for seamless navigation and <strong>Axios</strong> for handling API requests.</li>
-                  </ul>
+                  </ul></div>
                 </div>
           
                 <div class="swiper-slide text-center">
-                  <i class="fas fa-hard-hat" style="font-size: 100px;color:black;"></i>
-                  <ul style="text-align:justify;color:white;">
+                    <div class="section-expertice">
+                  <i class="fas fa-hard-hat" ></i>
+                  <ul style="color:white;">
                     <li>Developed and tested smart contracts using <strong>Hardhat</strong>, ensuring efficient deployment and contract interaction.</li>
                     <li>Integrated <strong>Hardhat</strong> with <strong>Ethereum</strong> test networks (Rinkeby, Goerli) for seamless contract testing and validation.</li>
                     <li>Automated smart contract deployment and interaction scripts using <strong>Hardhat</strong> along with <strong>ethers.js</strong> for smooth DApp integration.</li>
-                  </ul>
+                  </ul></div>
                 </div>
           
               </div>
@@ -555,9 +558,9 @@
             <div class="container">
                 <div class="footer-info">
                     <h2>Rutvik</h2>
-                    <h3>Vastrapur, Ahmedabad, INDIA</h3>
+                    <h3>Ahmedabad, INDIA</h3>
                     <div class="footer-menu">
-                        <p>+012 345 67890</p>
+                        <p>+91 9313434881</p>
                         <p>info@example.com</p>
                     </div>
                     <div class="footer-social">
@@ -570,8 +573,8 @@
                 </div>
             </div>
             <div class="container copyright">
-                <p>&copy; <a href="#">Your Site Name</a>, All Right Reserved | Designed By <a
-                        href="https://htmlcodex.com">Rutvik</a></p>
+                <p>&copy; <a href="https://rutvikdev.in/resume?id=reusbjkbhjbfjbbjbjbjb">rutvikdev.in</a>, All Right Reserved | Designed By <a
+                        href="https://rutvikdev.in/resume?id=reusbjkbhjbfjbbjbjbjb">Rutvik</a></p>
             </div>
         </div>
     </div>
@@ -669,9 +672,10 @@ setTimeout(function () {
           spaceBetween: 30,
           loop: true,
           grabCursor: true,
+          speed: 2000,
           autoplay: {
             delay: 3000,
-            disableOnInteraction: false,
+            disableOnInteraction: true,
           },
           breakpoints: {
             768: {
