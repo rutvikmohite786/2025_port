@@ -1667,6 +1667,9 @@ a:focus {
     .section-expertice {
         height: auto;
     }
+    .project-description h2,span{
+        font-size: larger !important;
+    }
   }
 
 
