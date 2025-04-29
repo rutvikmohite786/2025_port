@@ -949,11 +949,8 @@ a:focus {
     color: #ffffff;
 }
 
-.banner .section-header h2 span {
-    color: #00aab1;
+.banner .section-header h2 span { 
     font-size: 50px;
-    background: #fff;
-    padding: 5px 16px;
     border-radius: 8px;
 }
 
