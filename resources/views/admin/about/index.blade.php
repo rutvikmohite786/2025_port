@@ -23,7 +23,7 @@
       <td>{{$value->title}}</td>
       <td>{{$value->description}}</td>
       <td>{{$value->for_use}}</td>
-       <td> <a type="button" href="/admin/about/edit/{{$value->id}}" class="btn btn-primary update">edit</a>
+       <td style="display: flex;"> <a type="button" href="/admin/about/edit/{{$value->id}}" class="btn btn-primary update">edit</a>
       <a type="button" href="/admin/about/delete/{{$value->id}}" class="btn btn-danger delete">delete</a></td>
     </tr>
     @endforeach

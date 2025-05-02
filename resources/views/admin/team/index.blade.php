@@ -21,7 +21,7 @@
       <td>{{$value->name}}</td>
       <td>{{$value->description}}</td>
       <td>{{$value->designation}}</td>
-      <td> <a type="button" href="/admin/team/edit/{{$value->id}}" class="btn btn-primary update">edit</a>
+      <td style="display: flex;"> <a type="button" href="/admin/team/edit/{{$value->id}}" class="btn btn-primary update">edit</a>
       <a type="button" href="/admin/team/delete/{{$value->id}}" class="btn btn-danger delete">delete</a></td>
     </tr>
     @endforeach

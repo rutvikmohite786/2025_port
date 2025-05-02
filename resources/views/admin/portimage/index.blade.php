@@ -20,7 +20,7 @@
       <th scope="row">{{$key+1}}</th>
       <td>{{$value->portfolio->title}}</td>
       <td><img src="{{asset('images/portfolio'.'/'.$value->image)}}" alt="Image" class="adminportimage"></td>
-      <td> <a type="button" href="/admin/port/image/edit/{{$value->id}}" class="btn btn-primary update">edit</a>
+      <td style="display: flex;"> <a type="button" href="/admin/port/image/edit/{{$value->id}}" class="btn btn-primary update">edit</a>
       <a type="button" href="/admin/port/image/delete/{{$value->id}}" class="btn btn-danger delete">delete</a></td>
     </tr>
     @endforeach

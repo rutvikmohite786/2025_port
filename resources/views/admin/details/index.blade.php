@@ -24,7 +24,7 @@
       <td>{{$value->link_1}}</td>
       <td>{{$value->link_2}}</td>
       <td>{{$value->duration}}</td>
-      <td> <a type="button" href="/admin/portdetail/edit/{{$value->id}}" class="btn btn-primary update">edit</a>
+      <td style="display: flex;"> <a type="button" href="/admin/portdetail/edit/{{$value->id}}" class="btn btn-primary update">edit</a>
       <a type="button" href="/admin/portdetail/delete/{{$value->id}}" class="btn btn-danger delete">delete</a></td>
     </tr>
     @endforeach

@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\ResumeDownloadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -137,6 +138,15 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/admin/contact/edit/{id}', 'edit')->name('contact.edit');
         Route::post('/admin/contact/store', 'store')->name('admin.contact.store');
     });
+
+    Route::controller(ResumeDownloadController::class)->group(function () {
+        Route::get('admin/resume', 'index')->name('index.resume');
+        Route::get('admin/resume/add', 'add')->name('resume.add');
+        Route::get('admin/resume/edit/{id}', 'edit')->name('resume.edit');
+        Route::post('admin/resume/store', 'store')->name('resume.store');
+        Route::post('admin/resume/update', 'update')->name('resume.update');
+        Route::get('admin/resume/delete/{id}', 'delete')->name('resume.delete');
+    });
 });
 
 Route::controller(HomePageController::class)->group(function () {
@@ -144,6 +154,7 @@ Route::controller(HomePageController::class)->group(function () {
     Route::get('/resume', 'index')->name('portfolio.page.resume');
     Route::post('/contact/store', 'contactStore')->name('contact.store');
     Route::get('/back', 'redirectBack')->name('redirect.back');
+    Route::get('/download-cv', 'downloadCv')->name('download.cv');
 });
 
 Route::controller(PortfolioDetailController::class)->group(function () {
@@ -154,3 +165,4 @@ Route::controller(PortfolioDetailController::class)->group(function () {
 Route::controller(SettingController::class)->group(function () {
     Route::get('/admin/setting', 'sloganAdd')->name('portfolio.setting');
 });
+

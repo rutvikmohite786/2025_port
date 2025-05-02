@@ -28,7 +28,7 @@
                 <td>{{$value->location}}</td>
                 <td>{{$value->year}}</td>
                 <td>{{$value->for_use}}</td>
-                <td> <a type="button" href="/admin/experience/edit/{{$value->id}}" class="btn btn-primary update">edit</a>
+                <td style="display: flex;"> <a type="button" href="/admin/experience/edit/{{$value->id}}" class="btn btn-primary update">edit</a>
                     <a type="button" href="/admin/experience/delete/{{$value->id}}" class="btn btn-danger delete">delete</a></td>
             </tr>
             @endforeach

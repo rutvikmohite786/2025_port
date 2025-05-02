@@ -19,7 +19,7 @@
       <th scope="row">{{$key+1}}</th>
       <td>{{$value->name}}</td>
       <td>{{$value->percentage}}</td>
-      <td> <a type="button" href="/admin/about/edit/{{$value->id}}" class="btn btn-primary update">update</a>
+      <td style="display: flex;"> <a type="button" href="/admin/about/edit/{{$value->id}}" class="btn btn-primary update">update</a>
       <a type="button" href="/admin/about/delete/{{$value->id}}" class="btn btn-danger delete">delete</a></td>
     </tr>
     @endforeach
