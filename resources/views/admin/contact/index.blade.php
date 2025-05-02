@@ -24,7 +24,7 @@
                 <td>{{$value->email}}</td>
                 <td>{{$value->subject}}</td>
                 <td>{{$value->message}}</td>
-                <td> <a type="button" href="/admin/contact/edit/{{$value->id}}" class="btn btn-primary update">edit</a>
+                <td style="display: flex;"> <a type="button" href="/admin/contact/edit/{{$value->id}}" class="btn btn-primary update">edit</a>
                     <a type="button" href="/admin/contact/delete/{{$value->id}}" class="btn btn-danger delete">delete</a></td>
             </tr>
             @endforeach

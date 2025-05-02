@@ -89,7 +89,7 @@
                             <div class="typed-text">Back End Developer, Front End Developer</div>
                         </div>
                         <div class="hero-btn">
-                            <a class="btn" href="">Download CV</a>
+                            <a class="btn" href="{{ url('/download-cv') }}">Download CV</a>
                             <a class="btn" href="#contactForm">Contact Me</a>
                         </div>
                     </div>

@@ -2,15 +2,13 @@
 @section('content')
 <div class="container">
 @include('admin.message')
-<a type="button" href="{{route('service.add')}}" class="btn btn-primary">Add Data</a>
-<br><br>
+<a type="button" href="{{route('resume.add')}}" class="btn btn-primary">Add Data</a>
+<br>
 <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col">Image class</th>
+      <th scope="col">File Path</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
@@ -19,11 +17,9 @@
     @foreach($data as $key => $value)
     <tr>
       <th scope="row">{{$key+1}}</th>
-      <td>{{$value->title}}</td>
-      <td>{{$value->description}}</td>
-      <td>{{$value->image}}</td>
-      <td style="display: flex;"> <a type="button" href="/admin/service/edit/{{$value->id}}" class="btn btn-primary update">edit</a>
-      <a type="button" href="/admin/service/delete/{{$value->id}}" class="btn btn-danger delete">delete</a></td>
+      <td>{{$value->resume_path}}</td>
+      <td style="display: flex;"> <a type="button" href="/admin/resume/edit/{{$value->id}}" class="btn btn-primary update">edit</a>
+      <a type="button" href="/admin/port/image/delete/{{$value->id}}" class="btn btn-danger delete">delete</a></td>
     </tr>
     @endforeach
     @else

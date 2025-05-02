@@ -297,6 +297,12 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="{{route('index.resume')}}" class="nav-link {{ (request()->is('admin/resume*')) || (request()->is('admin/resume')) ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Resume</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="{{route('index.contact')}}" class="nav-link {{ (request()->is('admin/contact*')) || (request()->is('admin/contact')) ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Contact us</p>

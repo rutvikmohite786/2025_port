@@ -11,6 +11,7 @@ use App\Models\PortTech;
 use App\Models\Portfolio;
 use App\Models\Contact;
 use App\Models\Team;
+use App\Models\ResumeDownload;
 
 
 class HomePageController extends Controller
@@ -50,5 +51,11 @@ class HomePageController extends Controller
   public function redirectBack()
   {
     return redirect()->back()->with('success', 'your message,here');
+  }
+  public function downloadCv()
+  {
+    $resume = ResumeDownload::first();
+    $file = public_path('/pdf/portfolio/'.$resume->resume_path);
+    return response()->download($file);
   }
 }
