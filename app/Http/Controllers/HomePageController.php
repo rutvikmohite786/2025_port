@@ -56,6 +56,7 @@ class HomePageController extends Controller
   {
     $resume = ResumeDownload::first();
     $file = public_path('/pdf/portfolio/'.$resume->resume_path);
-    return response()->download($file);
+    $downloadName = 'rutvik_php_laravel_4_years.pdf';
+    return response()->download($file,$downloadName);
   }
 }
