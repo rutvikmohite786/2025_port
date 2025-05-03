@@ -1667,6 +1667,15 @@ a:focus {
     .project-description h2,span{
         font-size: larger !important;
     }
+    .team .team-item{
+        display: grid !important;
+    }
+    .team .team-text{
+        width: 100% !important;
+    }
+    .team .team-img{
+        width: 100% !important;
+    }
   }
 
 
