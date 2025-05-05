@@ -561,7 +561,8 @@
                     <h3>Ahmedabad, INDIA</h3>
                     <div class="footer-menu">
                         <p>+91 9313434881</p>
-                        <p>info@example.com</p>
+                        <p>itservice@rutvikdev.in
+                        </p>
                     </div>
                     <div class="footer-social">
                         <a href=""><i class="fab fa-twitter"></i></a>
