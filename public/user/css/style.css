@@ -1676,6 +1676,9 @@ a:focus {
     .team .team-img{
         width: 100% !important;
     }
+    #exampleModal h3{
+        font-size: larger !important;
+    }
   }
 
 
