@@ -10,7 +10,7 @@ class PortfolioImage extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'portfolio_id ',
+        'portfolio_id',
         'image'
     ];
     public function portfolio(): HasOne

@@ -155,9 +155,11 @@ Route::controller(HomePageController::class)->group(function () {
     Route::get('/contact', 'contact')->name('contact.page');
     Route::get('/services', 'services')->name('services.page');
     Route::get('/about', 'about')->name('about.page');
+    Route::get('/service/{id}', 'serviceDetail')->name('service.detail');
     Route::post('/contact/store', 'contactStore')->name('contact.store');
     Route::get('/back', 'redirectBack')->name('redirect.back');
     Route::get('/download-cv', 'downloadCv')->name('download.cv');
+    Route::get('/portfolio/details/{id}', 'getPortfolioDetails')->name('portfolio.details');
 });
 
 Route::controller(PortfolioDetailController::class)->group(function () {
