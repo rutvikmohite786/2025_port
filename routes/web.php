@@ -152,6 +152,9 @@ Route::group(['middleware' => 'auth'], function () {
 Route::controller(HomePageController::class)->group(function () {
     Route::get('/freelancing', 'index')->name('portfolio.page');
     Route::get('/resume', 'index')->name('portfolio.page.resume');
+    Route::get('/contact', 'contact')->name('contact.page');
+    Route::get('/services', 'services')->name('services.page');
+    Route::get('/about', 'about')->name('about.page');
     Route::post('/contact/store', 'contactStore')->name('contact.store');
     Route::get('/back', 'redirectBack')->name('redirect.back');
     Route::get('/download-cv', 'downloadCv')->name('download.cv');

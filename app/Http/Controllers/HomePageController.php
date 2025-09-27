@@ -59,4 +59,46 @@ class HomePageController extends Controller
     $downloadName = 'rutvik_php_laravel_4_years.pdf';
     return response()->download($file,$downloadName);
   }
+
+  public function contact()
+  {
+    if ($_GET['id'] == config('key.freelancer_key')) {
+      $about = About::where('for_use', 'freelancing')->first();
+      $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'freelancing')->first();
+    } else {
+      $about = About::where('for_use', 'resume')->first();
+      $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'freelancing')->first();
+    }
+    $team = Team::all();
+    return view('user.contact', compact('about', 'about_2', 'team'));
+  }
+
+  public function services()
+  {
+    if ($_GET['id'] == config('key.freelancer_key')) {
+      $about = About::where('for_use', 'freelancing')->first();
+      $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'freelancing')->first();
+    } else {
+      $about = About::where('for_use', 'resume')->first();
+      $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'freelancing')->first();
+    }
+    $service = Service::all();
+    $team = Team::all();
+    return view('user.services', compact('about', 'about_2', 'service', 'team'));
+  }
+
+  public function about()
+  {
+    if ($_GET['id'] == config('key.freelancer_key')) {
+      $about = About::where('for_use', 'freelancing')->first();
+      $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'freelancing')->first();
+    } else {
+      $about = About::where('for_use', 'resume')->first();
+      $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'freelancing')->first();
+    }
+    $tech = Technology::all();
+    $experience = Experience::where('for_use', $_GET['id'] == config('key.freelancer_key') ? 'freelancing' : 'resume')->get();
+    $team = Team::all();
+    return view('user.about', compact('about', 'about_2', 'tech', 'experience', 'team'));
+  }
 }

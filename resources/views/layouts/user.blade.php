@@ -1,54 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="no-js">
 <head>
     <meta charset="utf-8">
-    <title>Rutvikdev</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free Website Template" name="keywords">
-    <meta content="Free Website Template" name="description">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rutvik Rawal - Portfolio</title>
+
+    <script>
+        document.documentElement.classList.remove('no-js');
+        document.documentElement.classList.add('js');
+    </script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ asset('user/css/vendor.css') }}">
+    <link rel="stylesheet" href="{{ asset('user/css/styles.css') }}">
+
+    <!-- favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('user/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('user/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('user/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('user/site.webmanifest') }}">
+
+    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
-    <!-- CSS Libraries -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    {{-- <link href="{{ asset('user/lib/animate/animate.min.css')}}" rel="stylesheet"> --}}
-    <link href="{{ asset('user/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
-    <link href="{{ asset('user/lib/lightbox/css/lightbox.min.css')}}" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="{{ asset('user/css/style.css') }}?v={{ time() }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 </head>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="51">
-   
-       @yield('content')
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('user/lib/easing/easing.min.js')}}"></script>
-    <script src="{{ asset('user/lib/wow/wow.min.js')}}"></script>
-    <script src="{{ asset('user/lib/waypoints/waypoints.min.js')}}"></script>
-    <script src="{{ asset('user/lib/typed/typed.min.js')}}"></script>
-    <script src="{{ asset('user/lib/owlcarousel/owl.carousel.min.js')}}"></script>
-    <script src="{{ asset('user/lib/isotope/isotope.pkgd.min.js')}}"></script>
-    <script src="{{ asset('user/lib/lightbox/js/lightbox.min.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
-    <script src="{{ asset('user/js/main.js')}}"></script>
-    <!-- Contact Javascript File -->
-    @yield('footer')
-    <!-- Template Javascript -->
-</body>
+<body id="top">
 
+    @yield('content')
+
+    <!-- Java Script -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('user/js/plugins.js') }}"></script>
+    <script src="{{ asset('user/js/main.js') }}"></script>
+
+    @yield('footer')
+
+</body>
 </html>
