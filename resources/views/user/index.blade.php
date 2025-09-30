@@ -72,9 +72,7 @@
                     </div>
 
                     <div class="s-about__content-main grid-section-split__primary">
-                        <p class="attention-getter">
-                        {{ isset($about) ? $about->description : 'Passionate developer with expertise in creating modern, responsive web applications that deliver exceptional user experiences. I specialize in full-stack development with Laravel, React, and modern web technologies.' }}
-                        </p>
+                       
 
                         @if (isset($about_2) && $about_2->description)
                         <p class="attention-getter">
@@ -231,7 +229,7 @@
                     </div>
 
                     @if (isset($experience) && count($experience) > 0)
-                    <div class="timeline">
+                    <div class="timeline" style="width: 500%;">
                         @foreach ($experience as $key => $value)
                         <div class="timeline-item {{ $key % 2 == 0 ? 'left' : 'right' }}">
                             <div class="timeline-text">

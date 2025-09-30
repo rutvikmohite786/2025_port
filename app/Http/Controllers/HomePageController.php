@@ -76,7 +76,7 @@ class HomePageController extends Controller
       $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'freelancing')->first();
     } else {
       $about = About::where('for_use', 'resume')->first();
-      $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'freelancing')->first();
+      $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'resume')->first();
     }
     $team = Team::all();
     $blogs = Blog::orderBy('created_at', 'desc')->limit(4)->get();
@@ -90,7 +90,7 @@ class HomePageController extends Controller
       $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'freelancing')->first();
     } else {
       $about = About::where('for_use', 'resume')->first();
-      $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'freelancing')->first();
+      $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'resume')->first();
     }
     $service = Service::all();
     $team = Team::all();
@@ -105,7 +105,7 @@ class HomePageController extends Controller
       $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'freelancing')->first();
     } else {
       $about = About::where('for_use', 'resume')->first();
-      $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'freelancing')->first();
+      $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'resume')->first();
     }
     $tech = Technology::all();
     $experience = Experience::where('for_use', $_GET['id'] == config('key.freelancer_key') ? 'freelancing' : 'resume')->get();

@@ -45,9 +45,7 @@
                         @php
                             $pageSubtitle = $aboutSettings->where('setting_key', 'page_subtitle')->first();
                         @endphp
-                        {{ $pageSubtitle ? $pageSubtitle->setting_value : (isset($about) && $about->description ? 
-                            (strlen($about->description) > 300 ? substr($about->description, 0, 300) . '...' : $about->description) : 
-                            'I am a passionate developer with expertise in creating modern, responsive web applications that deliver exceptional user experiences. I specialize in full-stack development with Laravel, React, and modern web technologies.') }}
+                        {{ $pageSubtitle ? $pageSubtitle->setting_value : 'I am a passionate developer with expertise in creating modern, responsive web applications that deliver exceptional user experiences. I specialize in full-stack development with Laravel, React, and modern web technologies.' }}
                     </p>
                 </div>
             </div>
@@ -70,7 +68,7 @@
                     {{ isset($about) && $about->description ? $about->description : 'I am a passionate developer with expertise in creating modern, responsive web applications that deliver exceptional user experiences. I specialize in full-stack development with Laravel, React, and modern web technologies. My journey in web development started with a curiosity about how websites work and has evolved into a deep passion for creating digital solutions that make a difference.' }}
                     </p>
 
-                    @if (isset($about_2) && $about_2->description && $about_2->id != $about->id)
+                    @if (isset($about_2) && $about_2->description && $about_2->id != $about->id && $about_2->description != $about->description)
                     <p>{{ $about_2->description }}</p>
                     @endif
 
@@ -156,8 +154,8 @@
                     <h2>{{ $aboutMyself->title }}</h2>
                     <p>{{ $aboutMyself->content }}</p>
                     @else
-                    <h2>A Few More Words About Myself</h2>
-                    <p>When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.</p>
+                    <h2>My Approach & Philosophy</h2>
+                    <p>When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community. I believe in continuous learning and staying updated with the latest trends in web development.</p>
                     @endif
 
                 </div>
