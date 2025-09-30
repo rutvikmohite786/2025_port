@@ -47,11 +47,7 @@
             <div class="row pagemedia">
                 <div class="column xl-12">
                     <figure class="page-media">
-                        <img src="{{ asset('user/images/thumbs/about/about-1200.jpg') }}" 
-                             srcset="{{ asset('user/images/thumbs/about/about-2400.jpg') }} 2400w, 
-                                     {{ asset('user/images/thumbs/about/about-1200.jpg') }} 1200w, 
-                                     {{ asset('user/images/thumbs/about/about-600.jpg') }} 600w" 
-                             sizes="(max-width: 2400px) 100vw, 2400px" alt="">
+                        <img src="{{ asset('user/img/hero.png') }}" alt="Rutvik Rawal">
                     </figure>
                 </div>
             </div>
@@ -93,8 +89,8 @@
                         <div class="experience-item">
                             <div class="experience-content">
                                 <h4 class="experience-title">{{ $value->title }}</h4>
-                                <p class="experience-company">{{ $value->company }}</p>
-                                <p class="experience-duration">{{ $value->duration }}</p>
+                                <p class="experience-company">{{ $value->company_name }}</p>
+                                <p class="experience-duration">{{ $value->year }}</p>
                                 <p class="experience-description">{{ $value->description }}</p>
                             </div>
                         </div>
@@ -391,3 +387,4 @@
     }
 }
 </style>
+

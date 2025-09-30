@@ -222,34 +222,31 @@
         </section>
 
         <!-- experience -->
-        @if (isset($experience) && count($experience) > 0)
         <section id="experience" class="s-experience target-section">
             <div class="row s-experience__content width-sixteen-col">
                 <div class="column xl-12 grid-block">
                     <div class="section-header text-center">
                         <div class="text-pretitle">Experience</div>
-                        <h2 class="text-display-title">
-                        My Working Experience
-                        </h2>
-    </div>
+                        <h2 class="text-display-title">My Working Experience</h2>
+                    </div>
 
-                    <div class="experience-timeline">
-                    @foreach ($experience as $key => $value)
-                            <div class="timeline-item {{ $key % 2 == 0 ? 'left' : 'right' }}">
-                                <div class="timeline-content">
+                    @if (isset($experience) && count($experience) > 0)
+                    <div class="timeline">
+                        @foreach ($experience as $key => $value)
+                        <div class="timeline-item {{ $key % 2 == 0 ? 'left' : 'right' }}">
+                            <div class="timeline-text">
                                 <div class="timeline-date">{{ $value->year }}</div>
-                                    <h3>{{ $value->title }}</h3>
-                                    <h4>{{ $value->company_name }}</h4>
-                                    <p class="timeline-location">{{ $value->location }}</p>
-                                    <p class="timeline-description">{{ $value->description }}</p>
+                                <h2>{{ $value->title }}({{ $value->company_name }})</h2>
+                                <h4>{{ $value->location }}</h4>
+                                <p>{{ $value->description }}</p>
                             </div>
                         </div>
-                    @endforeach
+                        @endforeach
+                    </div>
+                    @endif
                 </div>
             </div>
-        </div>
         </section>
-    @endif
 
         <!-- clients -->
         <section id="clients" class="s-clients">
@@ -1139,6 +1136,118 @@
     .timeline-date {
         font-size: 0.8rem;
         padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Timeline Experience */
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: #007bff;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    background-color: #007bff;
+    border: 4px solid #fff;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item.left {
+    left: 0;
+}
+
+.timeline-item.right {
+    left: 50%;
+}
+
+.timeline-item.right::after {
+    left: -10px;
+}
+
+.timeline-text {
+    padding: 20px 30px;
+    background-color: #fff;
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.timeline-date {
+    color: #007bff;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.timeline-text h2 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.timeline-text h4 {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.timeline-text p {
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .timeline::before {
+        left: 31px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+    
+    .timeline-item::before {
+        left: 60px;
+        border: medium solid #007bff;
+        border-width: 10px 10px 10px 0;
+        border-color: transparent #007bff transparent transparent;
+    }
+    
+    .timeline-item.left::after,
+    .timeline-item.right::after {
+        left: 21px;
+    }
+    
+    .timeline-item.left,
+    .timeline-item.right {
+        left: 0%;
     }
 }
 </style>

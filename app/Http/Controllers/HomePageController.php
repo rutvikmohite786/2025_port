@@ -21,15 +21,17 @@ class HomePageController extends Controller
 {
   public function index()
   {
-
-    if ($_GET['id'] == config('key.freelancer_key')) {
+    // Check if ID parameter exists and matches freelancer key
+    $isFreelancer = isset($_GET['id']) && $_GET['id'] == config('key.freelancer_key');
+    
+    if ($isFreelancer) {
       $about = About::where('for_use', 'freelancing')->first();
       $experience = Experience::where('for_use', 'freelancing')->get();
       $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'freelancing')->first();
     } else {
       $about = About::where('for_use', 'resume')->first();
       $experience = Experience::where('for_use', 'resume')->get();
-      $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'freelancing')->first();
+      $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'resume')->first();
     }
     $team = Team::all();
     $tech = Technology::all();
