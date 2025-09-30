@@ -15,6 +15,9 @@ use App\Models\Contact;
 use App\Models\Team;
 use App\Models\Blog;
 use App\Models\ResumeDownload;
+use App\Models\AboutValue;
+use App\Models\AboutContent;
+use App\Models\AboutSetting;
 
 
 class HomePageController extends Controller
@@ -108,7 +111,13 @@ class HomePageController extends Controller
     $experience = Experience::where('for_use', $_GET['id'] == config('key.freelancer_key') ? 'freelancing' : 'resume')->get();
     $team = Team::all();
     $blogs = Blog::orderBy('created_at', 'desc')->limit(4)->get();
-    return view('user.about', compact('about', 'about_2', 'tech', 'experience', 'team', 'blogs'));
+    
+    // New dynamic content
+    $aboutValues = AboutValue::where('is_active', true)->orderBy('sort_order')->get();
+    $aboutContents = AboutContent::where('is_active', true)->get();
+    $aboutSettings = AboutSetting::where('is_active', true)->get();
+    
+    return view('user.about', compact('about', 'about_2', 'tech', 'experience', 'team', 'blogs', 'aboutValues', 'aboutContents', 'aboutSettings'));
   }
 
   public function getPortfolioDetails(Request $request)

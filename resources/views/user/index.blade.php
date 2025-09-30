@@ -278,7 +278,7 @@
                                     @if($value->image == '1744878069.png' || $value->image == '1744878108.png')
                                         <img src="{{ asset('images/portfolio/' . $value->image) }}" alt="{{ $value->title }}">
                                     @else
-                                        <img src="{{ asset('user/images/clients/' . $value->image) }}" alt="{{ $value->title }}">
+                                        <img src="{{ asset('images/clients/' . $value->image) }}" alt="{{ $value->title }}">
                                     @endif
                                     <div class="portfolio-overlay">
                                         <div class="portfolio-overlay-content">
@@ -516,7 +516,7 @@
                 if(portfolio.image == '1744878069.png' || portfolio.image == '1744878108.png') {
                     imageSrc = '/images/portfolio/' + portfolio.image;
                 } else {
-                    imageSrc = '/user/images/clients/' + portfolio.image;
+                    imageSrc = '/images/clients/' + portfolio.image;
                 }
                 $('#portfolioModalImage').attr('src', imageSrc).attr('alt', portfolio.title);
                 

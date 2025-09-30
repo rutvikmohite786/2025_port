@@ -147,6 +147,73 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('admin/resume/update', 'update')->name('resume.update');
         Route::get('admin/resume/delete/{id}', 'delete')->name('resume.delete');
     });
+
+    // New sections routes
+    Route::controller(App\Http\Controllers\Admin\PricingController::class)->group(function () {
+        Route::get('admin/pricing', 'index')->name('index.pricing');
+        Route::get('admin/pricing/add', 'add')->name('pricing.add');
+        Route::get('admin/pricing/edit/{id}', 'edit')->name('pricing.edit');
+        Route::post('admin/pricing/store', 'store')->name('pricing.store');
+        Route::post('admin/pricing/update', 'update')->name('pricing.update');
+        Route::get('admin/pricing/delete/{id}', 'delete')->name('pricing.delete');
+    });
+
+    Route::controller(App\Http\Controllers\Admin\TestimonialController::class)->group(function () {
+        Route::get('admin/testimonials', 'index')->name('index.testimonials');
+        Route::get('admin/testimonials/add', 'add')->name('testimonials.add');
+        Route::get('admin/testimonials/edit/{id}', 'edit')->name('testimonials.edit');
+        Route::post('admin/testimonials/store', 'store')->name('testimonials.store');
+        Route::post('admin/testimonials/update', 'update')->name('testimonials.update');
+        Route::get('admin/testimonials/delete/{id}', 'delete')->name('testimonials.delete');
+    });
+
+    Route::controller(App\Http\Controllers\Admin\FaqController::class)->group(function () {
+        Route::get('admin/faq', 'index')->name('index.faq');
+        Route::get('admin/faq/add', 'add')->name('faq.add');
+        Route::get('admin/faq/edit/{id}', 'edit')->name('faq.edit');
+        Route::post('admin/faq/store', 'store')->name('faq.store');
+        Route::post('admin/faq/update', 'update')->name('faq.update');
+        Route::get('admin/faq/delete/{id}', 'delete')->name('faq.delete');
+    });
+
+    Route::controller(App\Http\Controllers\Admin\SocialMediaController::class)->group(function () {
+        Route::get('admin/social-media', 'index')->name('index.social-media');
+        Route::get('admin/social-media/add', 'add')->name('social-media.add');
+        Route::get('admin/social-media/edit/{id}', 'edit')->name('social-media.edit');
+        Route::post('admin/social-media/store', 'store')->name('social-media.store');
+        Route::post('admin/social-media/update', 'update')->name('social-media.update');
+        Route::get('admin/social-media/delete/{id}', 'delete')->name('social-media.delete');
+    });
+
+    Route::controller(App\Http\Controllers\Admin\NewsletterController::class)->group(function () {
+        Route::get('admin/newsletter', 'index')->name('index.newsletter');
+        Route::get('admin/newsletter/delete/{id}', 'delete')->name('newsletter.delete');
+    });
+
+    // About page dynamic sections
+    Route::controller(App\Http\Controllers\Admin\AboutValueController::class)->group(function () {
+        Route::get('admin/about-values', 'index')->name('index.about-values');
+        Route::get('admin/about-values/add', 'add')->name('about-values.add');
+        Route::get('admin/about-values/edit/{id}', 'edit')->name('about-values.edit');
+        Route::post('admin/about-values/store', 'store')->name('about-values.store');
+        Route::post('admin/about-values/update', 'update')->name('about-values.update');
+        Route::get('admin/about-values/delete/{id}', 'delete')->name('about-values.delete');
+    });
+
+    Route::controller(App\Http\Controllers\Admin\AboutContentController::class)->group(function () {
+        Route::get('admin/about-content', 'index')->name('index.about-content');
+        Route::get('admin/about-content/add', 'add')->name('about-content.add');
+        Route::get('admin/about-content/edit/{id}', 'edit')->name('about-content.edit');
+        Route::post('admin/about-content/store', 'store')->name('about-content.store');
+        Route::post('admin/about-content/update', 'update')->name('about-content.update');
+        Route::get('admin/about-content/delete/{id}', 'delete')->name('about-content.delete');
+    });
+
+    Route::controller(App\Http\Controllers\Admin\AboutSettingController::class)->group(function () {
+        Route::get('admin/about-settings', 'index')->name('index.about-settings');
+        Route::get('admin/about-settings/edit/{id}', 'edit')->name('about-settings.edit');
+        Route::post('admin/about-settings/update', 'update')->name('about-settings.update');
+    });
 });
 
 Route::controller(HomePageController::class)->group(function () {

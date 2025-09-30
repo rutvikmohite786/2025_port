@@ -33,13 +33,21 @@
         <section class="s-pagecontent pagecontent">
             <div class="row pageintro">
                 <div class="column xl-6 lg-12">
-                    <h2 class="text-display-title">Some inspiring words to describe yourself</h2>
+                    <h2 class="text-display-title">
+                        @php
+                            $pageTitle = $aboutSettings->where('setting_key', 'page_title')->first();
+                        @endphp
+                        {{ $pageTitle ? $pageTitle->setting_value : 'Some inspiring words to describe yourself' }}
+                    </h2>
                 </div>
                 <div class="column xl-6 lg-12 u-flexitem-x-right">
                     <p class="lead">
-                    {{ isset($about) && $about->description ? 
-                        (strlen($about->description) > 300 ? substr($about->description, 0, 300) . '...' : $about->description) : 
-                        'I am a passionate developer with expertise in creating modern, responsive web applications that deliver exceptional user experiences. I specialize in full-stack development with Laravel, React, and modern web technologies.' }}
+                        @php
+                            $pageSubtitle = $aboutSettings->where('setting_key', 'page_subtitle')->first();
+                        @endphp
+                        {{ $pageSubtitle ? $pageSubtitle->setting_value : (isset($about) && $about->description ? 
+                            (strlen($about->description) > 300 ? substr($about->description, 0, 300) . '...' : $about->description) : 
+                            'I am a passionate developer with expertise in creating modern, responsive web applications that deliver exceptional user experiences. I specialize in full-stack development with Laravel, React, and modern web technologies.') }}
                     </p>
                 </div>
             </div>
@@ -47,7 +55,10 @@
             <div class="row pagemedia">
                 <div class="column xl-12">
                     <figure class="page-media">
-                        <img src="{{ asset('user/img/hero.png') }}" alt="Rutvik Rawal">
+                        @php
+                            $heroImage = $aboutSettings->where('setting_key', 'hero_image')->first();
+                        @endphp
+                        <img src="{{ asset($heroImage ? $heroImage->setting_value : 'user/img/hero.png') }}" alt="Rutvik Rawal">
                     </figure>
                 </div>
             </div>
@@ -100,56 +111,54 @@
 
                     <h2 class="u-add-bottom">My Values & Beliefs</h2>
 
+                    @if (isset($aboutValues) && count($aboutValues) > 0)
+                    <div class="grid-list-items list-items">
+                        @foreach ($aboutValues as $value)
+                        <div class="grid-list-items__item list-items__item u-remove-bottom">
+                            <div class="list-items__item-header">
+                                <h6 class="list-items__item-small-title">{{ $value->title }}</h6>
+                            </div>
+                            <p>{{ $value->description }}</p>
+                        </div>
+                        @endforeach
+                    </div>
+                    @else
                     <div class="grid-list-items list-items">
                         <div class="grid-list-items__item list-items__item u-remove-bottom">
                             <div class="list-items__item-header">
                                 <h6 class="list-items__item-small-title">Clean Code</h6>
                             </div>
-                            <p>
-                            I believe in writing maintainable, efficient, and well-documented code that follows best practices. Clean code is not just about functionality, but about creating solutions that are easy to understand, modify, and extend.
-                            </p>
+                            <p>I believe in writing maintainable, efficient, and well-documented code that follows best practices.</p>
                         </div>
                         <div class="grid-list-items__item list-items__item u-remove-bottom">
                             <div class="list-items__item-header">
                                 <h6 class="list-items__item-small-title">User Experience</h6>
                             </div>
-                            <p>
-                            Creating intuitive and engaging user experiences is at the heart of everything I do. I focus on understanding user needs and designing solutions that solve real problems while being delightful to use.
-                            </p>
-                        </div>
-                        <div class="grid-list-items__item list-items__item u-remove-bottom">
-                            <div class="list-items__item-header">
-                                <h6 class="list-items__item-small-title">Innovation</h6>
-                            </div>
-                            <p>
-                            I stay up-to-date with the latest technologies and trends in web development. Innovation drives me to explore new possibilities and implement cutting-edge solutions that push boundaries.
-                            </p>
-                        </div>
-                        <div class="grid-list-items__item list-items__item u-remove-bottom">
-                            <div class="list-items__item-header">
-                                <h6 class="list-items__item-small-title">Collaboration</h6>
-                            </div>
-                            <p>
-                            I believe in the power of teamwork and collaboration. Working closely with clients and team members to understand requirements and deliver exceptional results is what makes projects successful.
-                            </p>
+                            <p>Creating intuitive and engaging user experiences is at the heart of everything I do.</p>
                         </div>
                     </div>
+                    @endif
 
+                    @php
+                        $whyWorkWithMe = $aboutContents->where('section_type', 'why_work_with_me')->first();
+                        $aboutMyself = $aboutContents->where('section_type', 'about_myself')->first();
+                    @endphp
+
+                    @if ($whyWorkWithMe)
+                    <h2>{{ $whyWorkWithMe->title }}</h2>
+                    <p>{{ $whyWorkWithMe->content }}</p>
+                    @else
                     <h2>Why Work With Me</h2>
-                    <p>
-                    {{ isset($about) && $about->description ? 
-                        'With my expertise in modern web technologies and a passion for creating exceptional digital experiences, I bring a unique combination of technical skills and creative problem-solving to every project. ' . substr($about->description, 0, 200) . '...' : 
-                        'With my expertise in modern web technologies and a passion for creating exceptional digital experiences, I bring a unique combination of technical skills and creative problem-solving to every project. I understand that every business has unique needs, and I work closely with clients to deliver solutions that not only meet their requirements but exceed their expectations.' }}
-                    </p>
+                    <p>With my expertise in modern web technologies and a passion for creating exceptional digital experiences, I bring a unique combination of technical skills and creative problem-solving to every project.</p>
+                    @endif
 
-                    <p>
-                    I believe in building long-term relationships with my clients. My approach is collaborative, transparent, and focused on delivering value. Whether you need a simple website, a complex web application, or ongoing maintenance and support, I'm committed to providing solutions that help your business grow and succeed in the digital world.
-                    </p>
-
+                    @if ($aboutMyself)
+                    <h2>{{ $aboutMyself->title }}</h2>
+                    <p>{{ $aboutMyself->content }}</p>
+                    @else
                     <h2>A Few More Words About Myself</h2>
-                    <p>
-                    When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community. I believe in continuous learning and staying curious about the ever-evolving world of web development. My goal is to not just build websites and applications, but to create digital experiences that make a positive impact on people's lives and help businesses achieve their goals.
-                    </p>
+                    <p>When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.</p>
+                    @endif
 
                 </div>
             </div>
@@ -193,15 +202,18 @@
             <div class="row row-x-center text-center">
                 <div class="column xl-8 lg-12">
                     <div class="s-cta__content">
-                        <h2 class="text-display-title">
-                        Get started with a consultation today.
-                        </h2>
-                        <p class="lead">
-                        {{ isset($about) && $about->description ? 
-                            'Ready to bring your ideas to life? Let\'s discuss your project requirements and create something amazing together. ' . substr($about->description, 0, 150) . '...' : 
-                            'Ready to bring your ideas to life? Let\'s discuss your project requirements and create something amazing together.' }}
-                        </p>
+                        @php
+                            $ctaContent = $aboutContents->where('section_type', 'cta')->first();
+                        @endphp
+                        @if ($ctaContent)
+                        <h2 class="text-display-title">{{ $ctaContent->title }}</h2>
+                        <p class="lead">{{ $ctaContent->content }}</p>
+                        <a href="{{ $ctaContent->button_link ? url($ctaContent->button_link . '?id=' . $_GET['id']) : url('/contact?id=' . $_GET['id']) }}" class="btn btn--primary">{{ $ctaContent->button_text ?: 'Let\'s Work Together' }}</a>
+                        @else
+                        <h2 class="text-display-title">Get started with a consultation today.</h2>
+                        <p class="lead">Ready to bring your ideas to life? Let's discuss your project requirements and create something amazing together.</p>
                         <a href="{{ url('/contact?id=' . $_GET['id']) }}" class="btn btn--primary">Let's Work Together</a>
+                        @endif
                     </div>
                 </div>
             </div>

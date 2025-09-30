@@ -308,6 +308,54 @@
                                         <p>Contact us</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{route('index.pricing')}}" class="nav-link {{ (request()->is('admin/pricing*')) || (request()->is('admin/pricing')) ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Pricing</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('index.testimonials')}}" class="nav-link {{ (request()->is('admin/testimonials*')) || (request()->is('admin/testimonials')) ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Testimonials</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('index.faq')}}" class="nav-link {{ (request()->is('admin/faq*')) || (request()->is('admin/faq')) ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>FAQ</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('index.social-media')}}" class="nav-link {{ (request()->is('admin/social-media*')) || (request()->is('admin/social-media')) ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Social Media</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('index.newsletter')}}" class="nav-link {{ (request()->is('admin/newsletter*')) || (request()->is('admin/newsletter')) ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Newsletter</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('index.about-values')}}" class="nav-link {{ (request()->is('admin/about-values*')) || (request()->is('admin/about-values')) ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>About Values</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('index.about-content')}}" class="nav-link {{ (request()->is('admin/about-content*')) || (request()->is('admin/about-content')) ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>About Content</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('index.about-settings')}}" class="nav-link {{ (request()->is('admin/about-settings*')) || (request()->is('admin/about-settings')) ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>About Settings</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item">
