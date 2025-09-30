@@ -273,11 +273,8 @@
                         @foreach ($portfolio as $key => $value)
                             <div class="portfolio-item-card" data-id="{{ $value->id }}">
                                 <div class="portfolio-item-image">
-                                    @if($value->image == '1744878069.png' || $value->image == '1744878108.png')
                                         <img src="{{ asset('images/portfolio/' . $value->image) }}" alt="{{ $value->title }}">
-                                    @else
-                                        <img src="{{ asset('images/clients/' . $value->image) }}" alt="{{ $value->title }}">
-                                    @endif
+                                   
                                     <div class="portfolio-overlay">
                                         <div class="portfolio-overlay-content">
                                             <h3>{{ $value->title }}</h3>
@@ -511,7 +508,7 @@
                 
                 // Update image
                 let imageSrc = '';
-                if(portfolio.image == '1744878069.png' || portfolio.image == '1744878108.png') {
+                if(portfolio.image == '1744878069.png' || portfolio.image == '1744878108.png' || portfolio.image == '1746280925.png') {
                     imageSrc = '/images/portfolio/' + portfolio.image;
                 } else {
                     imageSrc = '/images/clients/' + portfolio.image;
