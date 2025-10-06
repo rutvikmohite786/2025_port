@@ -64,56 +64,6 @@
                                 </div>
                             @endforeach
                         </div>
-                        <div class="grid-full grid-list-items list-items show-ctr">
-                            <div class="grid-list-items__item list-items__item">
-                                <div class="list-items__item-header">
-                                    <h3 class="list-items__item-title">Web Development</h3>
-                                </div>
-                                <div class="list-items__item-text">
-                                    <p>
-                                    Complete web application development using Laravel, React, and modern technologies. I create scalable, 
-                                    maintainable, and efficient web solutions that meet your business requirements.
-                                    </p>
-                                    <ul class="list-services">
-                                        <li>Custom Development</li>
-                                        <li>Responsive Design</li>
-                                        <li>Modern Technologies</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="grid-list-items__item list-items__item">
-                                <div class="list-items__item-header">
-                                    <h3 class="list-items__item-title">Mobile-First Design</h3>
-                                </div>
-                                <div class="list-items__item-text">
-                                    <p>
-                                    Creating mobile-first, responsive designs that work perfectly on all devices. I ensure your website 
-                                    provides an optimal user experience across desktop, tablet, and mobile platforms.
-                                    </p>
-                                    <ul class="list-services">
-                                        <li>Responsive Layout</li>
-                                        <li>Mobile Optimization</li>
-                                        <li>Cross-Platform Testing</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="grid-list-items__item list-items__item">
-                                <div class="list-items__item-header">
-                                    <h3 class="list-items__item-title">Database Solutions</h3>
-                                </div>
-                                <div class="list-items__item-text">
-                                    <p>
-                                    Designing and optimizing database structures for optimal performance and scalability. I create 
-                                    efficient data models that support your application's growth and performance requirements.
-                                    </p>
-                                    <ul class="list-services">
-                                        <li>Database Design</li>
-                                        <li>Performance Optimization</li>
-                                        <li>Data Migration</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
                     @endif
 
                     <div class="row">
