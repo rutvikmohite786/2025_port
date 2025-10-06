@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Rutvik Rawal - Portfolio</title>
+    <title>Rutvik Mohite - Portfolio</title>
 
     <script>
         document.documentElement.classList.remove('no-js');

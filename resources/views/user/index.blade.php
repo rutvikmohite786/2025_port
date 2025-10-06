@@ -442,31 +442,35 @@
         <span class="portfolio-close">&times;</span>
         <div class="portfolio-modal-body">
             <div class="portfolio-modal-header">
-                <h2 class="portfolio-modal-title">Portfolio Details</h2>
-                        </div>
+                <h2 id="portfolioModalTitle">Portfolio Details</h2>
+            </div>
             <div class="portfolio-modal-main">
-                <div class="portfolio-modal-image">
-                    <img id="portfolioModalImage" src="" alt="Portfolio Image">
-                            </div>
+                <div class="portfolio-modal-image-section">
+                    <div class="portfolio-main-image">
+                        <img id="portfolioModalImage" src="" alt="Portfolio Image">
+                    </div>
+                    <div class="portfolio-gallery" id="portfolioGallery">
+                        <!-- Additional images will be populated dynamically -->
+                    </div>
+                </div>
                 <div class="portfolio-modal-info">
-                    <h3 id="portfolioModalTitle">Project Title</h3>
                     <div class="portfolio-modal-tech" id="portfolioModalTech">
                         <span class="tech-tag">Technology</span>
-                        </div>
+                    </div>
                     <div class="portfolio-modal-details" id="portfolioModalDetails">
                         <p>Project details will be loaded here...</p>
                     </div>
-                    <div class="portfolio-modal-links" id="portfolioModalLinks">
-                        <!-- Links will be populated dynamically -->
-                </div>
                     <div class="portfolio-modal-duration" id="portfolioModalDuration">
                         <!-- Duration will be populated dynamically -->
-                        </div>
-                            </div>
-                        </div>
+                    </div>
+                    <div class="portfolio-modal-links" id="portfolioModalLinks">
+                        <!-- Links will be populated dynamically -->
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
 
 <!-- Thank You Modal -->
 <div id="thankYouModal" class="modal" style="display: none;">
@@ -501,18 +505,14 @@
             success: function(response) {
                 const portfolio = response.portfolio;
                 const details = response.details;
+                const images = response.images;
                 const tech = response.tech;
                 
                 // Update modal content
                 $('#portfolioModalTitle').text(portfolio.title);
                 
-                // Update image
-                let imageSrc = '';
-                if(portfolio.image == '1744878069.png' || portfolio.image == '1744878108.png' || portfolio.image == '1746280925.png') {
-                    imageSrc = '/images/portfolio/' + portfolio.image;
-                } else {
-                    imageSrc = '/images/clients/' + portfolio.image;
-                }
+                // Update main image
+                let imageSrc = '/images/portfolio/' + portfolio.image;
                 $('#portfolioModalImage').attr('src', imageSrc).attr('alt', portfolio.title);
                 
                 // Update technology
@@ -529,26 +529,37 @@
                     $('#portfolioModalDetails').html('<p>This project showcases my skills in web development and demonstrates my ability to create innovative solutions.</p>');
                 }
                 
+                // Update duration
+                if(details && details.duration) {
+                    $('#portfolioModalDuration').html('<div class="duration-info"><strong>Duration:</strong> ' + details.duration + '</div>');
+                } else {
+                    $('#portfolioModalDuration').html('<div class="duration-info"><strong>Duration:</strong> Custom Project</div>');
+                }
+                
                 // Update links
                 let linksHtml = '';
                 if(details && details.link_1) {
-                    linksHtml += '<a href="' + details.link_1 + '" target="_blank" class="portfolio-link">View Project</a>';
+                    linksHtml += '<a href="' + details.link_1 + '" target="_blank" class="portfolio-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg> View Project</a>';
                 }
                 if(details && details.link_2) {
-                    linksHtml += '<a href="' + details.link_2 + '" target="_blank" class="portfolio-link">View Code</a>';
+                    linksHtml += '<a href="' + details.link_2 + '" target="_blank" class="portfolio-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg> View Code</a>';
                 }
                 if(linksHtml) {
                     $('#portfolioModalLinks').html(linksHtml);
                 } else {
-                    $('#portfolioModalLinks').html('<a href="#" class="portfolio-link">Contact for Details</a>');
+                    $('#portfolioModalLinks').html('<a href="#contact" class="portfolio-link contact-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> Contact for Details</a>');
                 }
                 
-                // Update duration
-                if(details && details.duration) {
-                    $('#portfolioModalDuration').html('<p><strong>Duration:</strong> ' + details.duration + '</p>');
-                } else {
-                    $('#portfolioModalDuration').html('<p><strong>Duration:</strong> Custom Project</p>');
+                // Update gallery images
+                let galleryHtml = '';
+                if(images && images.length > 0) {
+                    images.forEach(function(image, index) {
+                        galleryHtml += '<div class="gallery-item" onclick="changeMainImage(\'' + image.image + '\')">';
+                        galleryHtml += '<img src="/images/portfolio/' + image.image + '" alt="Gallery Image ' + (index + 1) + '">';
+                        galleryHtml += '</div>';
+                    });
                 }
+                $('#portfolioGallery').html(galleryHtml);
             },
             error: function(xhr) {
                 console.log('Error:', xhr.responseText);
@@ -569,8 +580,34 @@
             $('.modal, .portfolio-modal').hide();
         }
     });
+    
+    // Gallery image click handler
+    $(document).on('click', '.gallery-item', function() {
+        const imageSrc = $(this).find('img').attr('src');
+        $('#portfolioModalImage').attr('src', imageSrc);
+        
+        // Update active state
+        $('.gallery-item').removeClass('active');
+        $(this).addClass('active');
+    });
         });
     </script>
+
+<script>
+// Function to change main image from gallery
+function changeMainImage(imageName) {
+    const imageSrc = '/images/portfolio/' + imageName;
+    $('#portfolioModalImage').attr('src', imageSrc);
+    
+    // Update active state
+    $('.gallery-item').removeClass('active');
+    $('.gallery-item').each(function() {
+        if ($(this).find('img').attr('src').includes(imageName)) {
+            $(this).addClass('active');
+        }
+    });
+}
+</script>
 
 <style>
 /* Portfolio Grid Styles */
@@ -761,6 +798,80 @@
     padding: 2rem;
 }
 
+.portfolio-modal-image-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.portfolio-main-image {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.portfolio-main-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-main-image:hover img {
+    transform: scale(1.02);
+}
+
+.portfolio-gallery {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding: 0.5rem 0;
+}
+
+.gallery-item {
+    flex-shrink: 0;
+    width: 80px;
+    height: 60px;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+    border-color: #667eea;
+    transform: scale(1.05);
+}
+
+.gallery-item.active {
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.portfolio-modal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.duration-info {
+    background: #e3f2fd;
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid #2196f3;
+}
+
+.duration-info strong {
+    color: #1976d2;
+}
+
 .portfolio-modal-image {
     position: relative;
 }
@@ -861,6 +972,23 @@
     
     .portfolio-modal-image img {
         height: 200px;
+    }
+    
+    .gallery-item {
+        width: 60px;
+        height: 45px;
+    }
+    
+    .portfolio-gallery {
+        justify-content: center;
+    }
+    
+    .portfolio-modal-links {
+        flex-direction: column;
+    }
+    
+    .portfolio-link {
+        justify-content: center;
     }
 }
 
@@ -1193,7 +1321,6 @@
 }
 
 .timeline-date {
-    color: #007bff;
     font-weight: bold;
     font-size: 0.9rem;
     margin-bottom: 10px;

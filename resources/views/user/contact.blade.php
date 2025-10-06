@@ -68,12 +68,38 @@
                             Let's discuss how I can help you achieve your digital goals.
                             </p>
 
-                            <a href="mailto:itservice@rutvikdev.in" class="btn btn--primary u-fullwidth contact-btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);">
-                                    <path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path>
-                                </svg>
-                                Send Me An Email
-                            </a>
+                            <!-- Contact Form -->
+                            <form id="contactForm" class="contact-form">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="name" class="form-label">Name *</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Email *</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="subject" class="form-label">Subject *</label>
+                                    <input type="text" class="form-control" id="subject" name="subject" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message" class="form-label">Message *</label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn btn--primary u-fullwidth contact-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);">
+                                        <path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path>
+                                    </svg>
+                                    Send Message
+                                </button>
+                            </form>
+                            
+                            <div id="formMessage" class="form-message" style="display: none; margin-top: 15px; padding: 10px; border-radius: 5px;"></div>
                         </div>
 
                         <div class="column xl-5 md-12 u-flexitem-x-right">
@@ -176,5 +202,117 @@
     <x-footer :about="$about" />
 
 </div>
+
+<!-- Contact Form JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const messageDiv = document.getElementById('formMessage');
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(form);
+        
+        // Show loading state
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Sending...';
+        submitBtn.disabled = true;
+        
+        // Submit form via AJAX
+        fetch('{{ route("contact.store") }}', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                messageDiv.innerHTML = '<div style="color: #28a745; background-color: #d4edda; border: 1px solid #c3e6cb; padding: 10px; border-radius: 5px;">' + data.message + '</div>';
+                form.reset();
+            } else {
+                messageDiv.innerHTML = '<div style="color: #721c24; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 10px; border-radius: 5px;">Error: ' + (data.message || 'Something went wrong') + '</div>';
+            }
+            messageDiv.style.display = 'block';
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            messageDiv.innerHTML = '<div style="color: #721c24; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 10px; border-radius: 5px;">Error: Something went wrong. Please try again.</div>';
+            messageDiv.style.display = 'block';
+        })
+        .finally(() => {
+            // Reset button state
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        });
+    });
+});
+</script>
+
+<style>
+/* Contact Form Styling */
+.contact-form {
+    margin-top: 20px;
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form .form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.contact-form .form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+    background-color: #fff;
+}
+
+.contact-form .form-control:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.contact-form textarea.form-control {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form .btn {
+    margin-top: 10px;
+}
+
+.contact-form .btn svg {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-form .form-control {
+        padding: 10px 12px;
+    }
+}
+</style>
 
 @endsection

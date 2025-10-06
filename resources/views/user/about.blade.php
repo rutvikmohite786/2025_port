@@ -56,7 +56,7 @@
                         @php
                             $heroImage = $aboutSettings->where('setting_key', 'hero_image')->first();
                         @endphp
-                        <img src="{{ asset($heroImage ? $heroImage->setting_value : 'user/img/hero.png') }}" alt="Rutvik Rawal">
+                        <img src="{{ asset($heroImage ? $heroImage->setting_value : 'user/img/hero.png') }}" alt="Rutvik Mohite">
                     </figure>
                 </div>
             </div>
