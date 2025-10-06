@@ -596,7 +596,7 @@
 <script>
 // Function to change main image from gallery
 function changeMainImage(imageName) {
-    const imageSrc = '/images/portfolio/' + imageName;
+    const imageSrc = '{{ asset("images/portfolio") }}/' + imageName;
     $('#portfolioModalImage').attr('src', imageSrc);
     
     // Update active state
