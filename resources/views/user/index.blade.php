@@ -512,7 +512,7 @@
                 $('#portfolioModalTitle').text(portfolio.title);
                 
                 // Update main image
-                let imageSrc = '/images/portfolio/' + portfolio.image;
+                let imageSrc = '{{ asset("images/portfolio") }}/' + portfolio.image;
                 $('#portfolioModalImage').attr('src', imageSrc).attr('alt', portfolio.title);
                 
                 // Update technology
