@@ -555,7 +555,7 @@
                 if(images && images.length > 0) {
                     images.forEach(function(image, index) {
                         galleryHtml += '<div class="gallery-item" onclick="changeMainImage(\'' + image.image + '\')">';
-                        galleryHtml += '<img src="/images/portfolio/' + image.image + '" alt="Gallery Image ' + (index + 1) + '">';
+                        galleryHtml += '<img src="{{ asset("images/portfolio") }}/' + image.image + '" alt="Gallery Image ' + (index + 1) + '">';
                         galleryHtml += '</div>';
                     });
                 }
