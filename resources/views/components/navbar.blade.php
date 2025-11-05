@@ -20,6 +20,9 @@
                 <li class="{{ $currentPage === 'services' ? 'current' : '' }}">
                     <a href="{{ url('/services?id=' . $_GET['id']) }}">Services</a>
                 </li>
+                <li class="{{ $currentPage === 'blog' ? 'current' : '' }}">
+                    <a href="{{ url('/blog?id=' . $_GET['id']) }}">Blog</a>
+                </li>
                 <li class="{{ $currentPage === 'portfolio' ? 'current' : '' }}">
                     <a href="{{ url('/resume?id=' . $_GET['id']) }}#clients">Portfolio</a>
                 </li>

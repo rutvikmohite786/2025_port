@@ -220,7 +220,7 @@
         </section>
 
         <!-- experience -->
-        <section id="experience" class="s-experience target-section">
+        <!-- <section id="experience" class="s-experience target-section">
             <div class="row s-experience__content width-sixteen-col">
                 <div class="column xl-12 grid-block">
                     <div class="section-header text-center">
@@ -244,7 +244,23 @@
                     @endif
                 </div>
             </div>
-        </section>
+        </section> -->
+
+        @if (isset($experience) && count($experience) > 0)
+                    <h2 class="u-add-bottom">My Experience</h2>
+                    <div class="experience-timeline">
+                        @foreach ($experience as $key => $value)
+                        <div class="experience-item">
+                            <div class="experience-content">
+                                <h4 class="experience-title">{{ $value->title }}</h4>
+                                <p class="experience-company">{{ $value->company_name }}</p>
+                                <p class="experience-duration">{{ $value->year }}</p>
+                                <p class="experience-description">{{ $value->description }}</p>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                    @endif
 
         <!-- clients -->
         <section id="clients" class="s-clients">

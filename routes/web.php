@@ -130,6 +130,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/admin/blog/add', 'add')->name('blog.add');
         Route::get('/admin/blog/edit/{id}', 'edit')->name('blog.edit');
         Route::post('/admin/blog/store', 'store')->name('blog.store');
+        Route::post('/admin/blog/update', 'update')->name('blog.update');
+        Route::get('/admin/blog/delete/{id}', 'delete')->name('blog.delete');
     });
 
     Route::controller(ContactController::class)->group(function () {
@@ -221,6 +223,8 @@ Route::controller(HomePageController::class)->group(function () {
     Route::get('/resume', 'index')->name('portfolio.page.resume');
     Route::get('/contact', 'contact')->name('contact.page');
     Route::get('/services', 'services')->name('services.page');
+    Route::get('/blog', 'blog')->name('blog.page');
+    Route::get('/blog/{id}', 'blogDetail')->name('blog.detail');
     Route::get('/about', 'about')->name('about.page');
     Route::get('/service/{id}', 'serviceDetail')->name('service.detail');
     Route::post('/contact/store', 'contactStore')->name('contact.store');

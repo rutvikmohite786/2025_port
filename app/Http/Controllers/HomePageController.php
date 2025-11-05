@@ -137,6 +137,35 @@ class HomePageController extends Controller
     ]);
   }
 
+  public function blog()
+  {
+    if ($_GET['id'] == config('key.freelancer_key')) {
+      $about = About::where('for_use', 'freelancing')->first();
+      $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'freelancing')->first();
+    } else {
+      $about = About::where('for_use', 'resume')->first();
+      $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'resume')->first();
+    }
+    $blogs = Blog::orderBy('created_at', 'desc')->paginate(6);
+    $team = Team::all();
+    return view('user.blog', compact('about', 'about_2', 'blogs', 'team'));
+  }
+
+  public function blogDetail($id)
+  {
+    if ($_GET['id'] == config('key.freelancer_key')) {
+      $about = About::where('for_use', 'freelancing')->first();
+      $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'freelancing')->first();
+    } else {
+      $about = About::where('for_use', 'resume')->first();
+      $about_2 = About::orderBy('id', 'DESC')->where('for_use', 'resume')->first();
+    }
+    $blog = Blog::find($id);
+    $recentBlogs = Blog::where('id', '!=', $id)->orderBy('created_at', 'desc')->limit(3)->get();
+    $team = Team::all();
+    return view('user.blog-detail', compact('about', 'about_2', 'blog', 'recentBlogs', 'team'));
+  }
+
   public function serviceDetail($id)
   {
     if ($_GET['id'] == config('key.freelancer_key')) {

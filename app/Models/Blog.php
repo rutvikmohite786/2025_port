@@ -11,15 +11,11 @@ class Blog extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'slug', 'excerpt', 'content', 'featured_image', 'meta_title',
-        'meta_description', 'category_id', 'tags', 'status', 'is_featured',
-        'views', 'published_at', 'old_image', 'old_description', 'old_url'
+        'title', 'description', 'image', 'url', 'tag', 'date'
     ];
 
     protected $casts = [
-        'tags' => 'array',
-        'is_featured' => 'boolean',
-        'published_at' => 'datetime'
+        'date' => 'date'
     ];
 
     public function category()
