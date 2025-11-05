@@ -246,21 +246,50 @@
             </div>
         </section> -->
 
-        @if (isset($experience) && count($experience) > 0)
-                    <h2 class="u-add-bottom">My Experience</h2>
-                    <div class="experience-timeline">
-                        @foreach ($experience as $key => $value)
-                        <div class="experience-item">
-                            <div class="experience-content">
-                                <h4 class="experience-title">{{ $value->title }}</h4>
-                                <p class="experience-company">{{ $value->company_name }}</p>
-                                <p class="experience-duration">{{ $value->year }}</p>
-                                <p class="experience-description">{{ $value->description }}</p>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                    @endif
+         <!-- experience -->
+         <section id="experience" class="s-experience target-section">
+             <div class="row s-experience__content width-sixteen-col">
+                 <div class="column xl-12">
+                     <div class="experience-wrapper">
+                         <!-- Left Column: Title Section -->
+                         <div class="experience-title-section">
+                             <div class="text-pretitle">Experience</div>
+                             <h2 class="text-display-title">My Experience</h2>
+                             <p class="experience-intro">A journey of growth, learning, and professional achievements.</p>
+                         </div>
+
+                         <!-- Right Column: Timeline -->
+                         @if (isset($experience) && count($experience) > 0)
+                         <div class="experience-timeline-section">
+                             <div class="modern-timeline">
+                                 @foreach ($experience as $key => $value)
+                                 <div class="timeline-card">
+                                     <div class="timeline-marker"></div>
+                                     <div class="timeline-card-content">
+                                         <div class="timeline-header">
+                                             <div class="timeline-title-group">
+                                                 <h3 class="timeline-job-title">{{ $value->title }}</h3>
+                                                 <div class="timeline-company-info">
+                                                     <span class="timeline-company">{{ $value->company_name }}</span>
+                                                     @if(!empty($value->location))
+                                                     <span class="timeline-divider">•</span>
+                                                     <span class="timeline-location">{{ $value->location }}</span>
+                                                     @endif
+                                                 </div>
+                                             </div>
+                                             <span class="timeline-year-badge">{{ $value->year }}</span>
+                                         </div>
+                                         <p class="timeline-description">{{ $value->description }}</p>
+                                     </div>
+                                 </div>
+                                 @endforeach
+                             </div>
+                         </div>
+                         @endif
+                     </div>
+                 </div>
+             </div>
+         </section>
 
         <!-- clients -->
         <section id="clients" class="s-clients">
@@ -1124,157 +1153,334 @@ function changeMainImage(imageName) {
     to { width: var(--skill-width); }
 }
 
-/* Experience Timeline Styles */
+/* Modern Experience Timeline Styles */
 .s-experience {
     padding: 6rem 0;
     background: #f8f9fa;
 }
 
-.experience-timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 0;
+/* Two Column Wrapper */
+.experience-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 2rem;
 }
 
-.experience-timeline::before {
+/* Left Column: Title Section */
+.experience-title-section {
+    position: sticky;
+    top: 100px;
+    max-width: 90%;
+}
+
+.experience-title-section .text-pretitle {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #667eea;
+    margin-bottom: 1.5rem;
+}
+
+.experience-title-section .text-display-title {
+    font-size: 6.5rem;
+    font-weight: 800;
+    color: #1a202c;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.experience-intro {
+    font-size: 1.125rem;
+    color: #718096;
+    line-height: 1.7;
+    margin: 0;
+    max-width: 85%;
+}
+
+/* Right Column: Timeline Section */
+.experience-timeline-section {
+    width: 100%;
+}
+
+.modern-timeline {
+    position: relative;
+    width: 100%;
+    padding: 0;
+}
+
+/* Vertical line on the left */
+.modern-timeline::before {
     content: '';
     position: absolute;
-    left: 50%;
+    left: 1.5rem;
     top: 0;
     bottom: 0;
-    width: 2px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    transform: translateX(-50%);
+    width: 3px;
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
 }
 
-.timeline-item {
+.timeline-card {
     position: relative;
-    margin-bottom: 3rem;
-    width: 50%;
+    padding-left: 4rem;
+    margin-bottom: 2rem;
 }
 
-.timeline-item.left {
-    left: 0;
-    padding-right: 2rem;
-}
-
-.timeline-item.right {
-    left: 50%;
-    padding-left: 2rem;
-}
-
-.timeline-item::before {
-    content: '';
+/* Timeline dot marker */
+.timeline-marker {
     position: absolute;
-    top: 1rem;
-    width: 16px;
-    height: 16px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 50%;
-    border: 4px solid #fff;
-    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
-}
-
-.timeline-item.left::before {
-    right: -8px;
-}
-
-.timeline-item.right::before {
-    left: -8px;
-}
-
-.timeline-content {
+    left: 0.75rem;
+    top: 1.5rem;
+    width: 20px;
+    height: 20px;
     background: #fff;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    position: relative;
-    transition: all 0.3s ease;
+    border: 4px solid #667eea;
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
 }
 
-.timeline-content:hover {
+/* Card content */
+.timeline-card-content {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.75rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border-left: 4px solid #667eea;
+}
+
+.timeline-card-content:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
-.timeline-date {
-    display: inline-block;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
+/* Header section with title and year */
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
     margin-bottom: 1rem;
 }
 
-.timeline-content h3 {
-    font-size: 1.3rem;
-    color: #333;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
+.timeline-title-group {
+    flex: 1;
 }
 
-.timeline-content h4 {
-    font-size: 1.1rem;
+.timeline-job-title {
+    font-size: 1.625rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.3;
+}
+
+.timeline-company-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.timeline-company {
+    font-size: 1.125rem;
+    font-weight: 600;
     color: #667eea;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
+}
+
+.timeline-divider {
+    color: #cbd5e0;
+    font-weight: bold;
+    font-size: 1.125rem;
 }
 
 .timeline-location {
-    color: #666;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    font-style: italic;
+    font-size: 1.0625rem;
+    color: #718096;
+}
+
+.timeline-year-badge {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    padding: 0.5rem 1.25rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .timeline-description {
-    color: #666;
-    line-height: 1.6;
+    color: #4a5568;
+    line-height: 1.75;
+    font-size: 17px;
     margin: 0;
 }
 
-/* Responsive Design for Experience */
+/* Desktop optimizations */
+@media (min-width: 769px) {
+    .timeline-card-content {
+        padding: 2rem 2.25rem;
+    }
+    
+    .timeline-job-title {
+        font-size: 1.75rem;
+    }
+}
+
+/* Tablet responsive */
+@media (max-width: 992px) {
+    .experience-wrapper {
+        grid-template-columns: 1fr 1.5fr;
+        gap: 3rem;
+    }
+    
+    .experience-title-section {
+        max-width: 95%;
+    }
+    
+    .experience-title-section .text-display-title {
+        font-size: 2.75rem;
+    }
+    
+    .experience-intro {
+        font-size: 1.0625rem;
+        max-width: 90%;
+    }
+}
+
+/* Tablet and mobile responsive */
 @media (max-width: 768px) {
-    .experience-timeline::before {
-        left: 2rem;
+    .experience-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 1rem;
     }
     
-    .timeline-item {
-        width: 100%;
-        left: 0 !important;
-        padding-left: 4rem !important;
-        padding-right: 0 !important;
+    .experience-title-section {
+        position: relative;
+        top: 0;
+        text-align: center;
+        max-width: 100%;
     }
     
-    .timeline-item::before {
-        left: 1.5rem !important;
-        right: auto !important;
+    .experience-title-section .text-display-title {
+        font-size: 2.25rem;
     }
     
-    .timeline-content {
+    .experience-intro {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+    
+    .modern-timeline::before {
+        left: 1rem;
+    }
+    
+    .timeline-card {
+        padding-left: 3rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .timeline-marker {
+        left: 0.375rem;
+        top: 1.25rem;
+        width: 16px;
+        height: 16px;
+        border-width: 3px;
+    }
+    
+    .timeline-card-content {
         padding: 1.5rem;
     }
     
-    .timeline-content h3 {
-        font-size: 1.2rem;
+    .timeline-header {
+        flex-direction: column;
+        gap: 0.75rem;
     }
     
-    .timeline-content h4 {
+    .timeline-year-badge {
+        align-self: flex-start;
+        font-size: 0.95rem;
+        padding: 0.4rem 1rem;
+    }
+    
+    .timeline-job-title {
+        font-size: 1.375rem;
+    }
+    
+    .timeline-company {
+        font-size: 1.0625rem;
+    }
+    
+    .timeline-location {
+        font-size: 1rem;
+    }
+    
+    .timeline-description {
         font-size: 1rem;
     }
 }
 
+/* Small mobile devices */
 @media (max-width: 480px) {
-    .timeline-content {
+    .s-experience {
+        padding: 4rem 0;
+    }
+    
+    .experience-wrapper {
+        padding: 0 0.5rem;
+    }
+    
+    .experience-title-section .text-display-title {
+        font-size: 1.875rem;
+    }
+    
+    .experience-intro {
+        font-size: 0.9375rem;
+    }
+    
+    .timeline-card {
+        padding-left: 2.5rem;
+    }
+    
+    .timeline-card-content {
         padding: 1.25rem;
     }
     
-    .timeline-date {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
+    .timeline-job-title {
+        font-size: 1.25rem;
+    }
+    
+    .timeline-company {
+        font-size: 1rem;
+    }
+    
+    .timeline-location {
+        font-size: 0.9375rem;
+    }
+    
+    .timeline-description {
+        font-size: 0.9375rem;
+    }
+    
+    .timeline-year-badge {
+        font-size: 0.875rem;
+    }
+    
+    .timeline-company-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+    
+    .timeline-divider {
+        display: none;
     }
 }
 
