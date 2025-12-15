@@ -6,7 +6,7 @@
         <div class="s-header__block">
             <div class="s-header__logo">
                 <a class="logo" href="{{ url('/resume?id=' . $_GET['id']) }}">
-                    <img src="{{ asset('user/images/logo.svg') }}" alt="Homepage">
+                    <img src="{{ asset('user/images/rutvik-logo.svg') }}" alt="Rutvik">
                 </a>
             </div>
             <a class="s-header__menu-toggle" href="#0"><span>Menu</span></a>
