@@ -3631,7 +3631,6 @@ td:last-child {
 }
 
 .s-intro__content-title {
-	font-size    : clamp(5rem, 7vw, 11.6rem);
 	line-height  : 1;
 	margin-top   : 0;
 	margin-bottom: var(--vspace-1_25);
@@ -3853,9 +3852,6 @@ td:last-child {
 		grid-column-end: span 8;
 	}
 
-	.s-intro__content-title {
-		font-size: clamp(4rem, 10vw, 10.4rem);
-	}
 
 	.s-intro__content-title br {
 		display: none;
