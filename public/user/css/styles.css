@@ -3234,7 +3234,7 @@ td:last-child {
 }
 
 .s-header__logo img {
-	width         : var(--logo-width);
+	width         : 196px;
 	margin        : 0;
 	vertical-align: bottom;
 }
